@@ -1,3 +1,33 @@
+"""
+XTuner 自定义数据集检查器
+
+本脚本旨在验证和处理用于XTuner的自定义数据集，特别是针对Single-turn Fine-tuning (SFT)任务。
+它执行以下几个关键功能：
+
+1. 参数解析：接受配置文件路径作为命令行参数。
+2. 配置加载：加载并解析指定的配置文件。
+3. 数据集验证：检查数据集是否符合预期格式。
+4. 数据处理：对数据集应用指定的转换和编码。
+5. 格式转换：确保数据集格式与XTuner兼容。
+6. 采样和打包：可选地对数据集进行采样和打包到指定长度。
+
+该脚本特别适用于：
+- 验证自定义数据集配置的正确性。
+- 调试数据加载和处理流程。
+- 确保数据集在训练前格式正确。
+
+使用方法：
+    xtuner check-custom-dataset /path/to/your/config.py
+
+配置文件应指定以下详细信息：
+- Dataset 路径和格式
+- Tokenizer 设置
+- 数据映射和模板函数
+- 处理参数（最大长度，打包设置等）
+
+这个工具是准备自定义数据集以用于XTuner的重要步骤，有助于在数据准备过程的早期发现和诊断问题。
+"""
+
 # Copyright (c) OpenMMLab. All rights reserved.
 import argparse
 from functools import partial
